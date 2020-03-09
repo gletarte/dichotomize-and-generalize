@@ -1,6 +1,6 @@
 # Dichotomize and Generalize: PAC-Bayesian Binary Activated Deep Neural Networks
 
-This repository contains an implementation of PBGNet (**P**AC-Bayesian **B**inary **G**radient **Net**work) and all related experiments presented in "[Dichotomize and Generalize: PAC-Bayesian Binary Activated Deep Neural Networks](https://arxiv.org/abs/1905.10259)" by Letarte, Germain, Guedj and Laviolette, accepted at *NeurIPS 2019*.
+This repository contains an implementation of PBGNet (**P**AC-Bayesian **B**inary **G**radient **Net**work) and all related experiments presented in "[Dichotomize and Generalize: PAC-Bayesian Binary Activated Deep Neural Networks](https://papers.nips.cc/paper/8911-dichotomize-and-generalize-pac-bayesian-binary-activated-deep-neural-networks)" by Letarte, Germain, Guedj and Laviolette, accepted at *NeurIPS 2019*.
 
 ## Requirements
 - Python 3.6
@@ -25,10 +25,11 @@ For all possible options and their description, see ``python experiment.py --hel
 
 ## BiBTeX
 ```
-@article{letarte2019dichotomize,
-  title={Dichotomize and Generalize: PAC-Bayesian Binary Activated Deep Neural Networks},
+@inproceedings{letarte2019dichotomize,
+  title={Dichotomize and generalize: Pac-bayesian binary activated deep neural networks},
   author={Letarte, Ga{\"e}l and Germain, Pascal and Guedj, Benjamin and Laviolette, Fran{\c{c}}ois},
-  journal={arXiv preprint arXiv:1905.10259},
+  booktitle={Advances in Neural Information Processing Systems},
+  pages={6869--6879},
   year={2019}
 }
 ```
