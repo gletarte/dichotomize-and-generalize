@@ -2,5 +2,5 @@ click==6.7
 numpy==1.14.3
 torch==1.2.0
 pandas==0.23.0
-poutyne==0.6
+poutyne==1.0.1
 scikit_learn==0.20.3

@@ -161,7 +161,7 @@ def launch(dataset, experiment_name, network, hidden_size, hidden_layers, sample
         if not exists(pre_logging_path): makedirs(pre_logging_path)
 
         pretrain = Experiment(directory=pre_logging_path,
-                              module=pre_net,
+                              network=pre_net,
                               optimizer=pre_optimizer,
                               loss_function=linear_loss,
                               monitor_metric='loss',
@@ -173,8 +173,8 @@ def launch(dataset, experiment_name, network, hidden_size, hidden_layers, sample
                                      batch_size,
                                      shuffle=True)
 
-        pretrain.train(train_loader=pretrain_loader,
-                       valid_loader=None,
+        pretrain.train(train_generator=pretrain_loader,
+                       valid_generator=None,
                        epochs=pre_epochs,
                        save_every_epoch=False,
                        disable_tensorboard=True,
@@ -216,7 +216,7 @@ def launch(dataset, experiment_name, network, hidden_size, hidden_layers, sample
 
     # Creating Poutyne experiment
     expt = Experiment(directory=logging_path,
-                      module=net,
+                      network=net,
                       optimizer=optimizer,
                       loss_function=cost_function,
                       monitor_metric=monitor_metric,

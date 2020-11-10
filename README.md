@@ -6,7 +6,7 @@ This repository contains an implementation of PBGNet (**P**AC-Bayesian **B**inar
 - Python 3.6
 - Numpy 1.14.3
 - Pytorch 1.2.0
-- Poutyne 0.6.0
+- Poutyne 1.0.1
 - Scikit-learn 0.20.3
 - Pandas 0.23.0
 - Click 6.7

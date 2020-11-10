@@ -44,13 +44,13 @@ class MasterMetricLogger(EpochMetric):
         self.n_examples = n_examples
         self.C_range = C_range
         self.__name__ = self.loss_function.__name__
-        self._reset()
+        self.reset()
 
     def forward(self, y_prediction, y_true):
         self.loss_sum += self.loss_function(y_prediction, y_true) * y_true.shape[0]
         self.example_sum += y_true.shape[0]
 
-    def _reset(self):
+    def reset(self):
         self.loss_sum = 0
         self.example_sum = 0
 
@@ -68,7 +68,6 @@ class MasterMetricLogger(EpochMetric):
             min_idx = bound_value.argmin()
             metrics.update({'C': C[min_idx].item(), 'bound': bound_value[min_idx].item()})
         self.network.metrics.update(metrics)
-        self._reset()
         return loss
 
 class MetricLogger(EpochMetric):
@@ -81,6 +80,9 @@ class MetricLogger(EpochMetric):
         self.__name__ = key
 
     def forward(self, y_prediction, y_true):
+        pass
+        
+    def reset(self):
         pass
 
     def get_metric(self):
