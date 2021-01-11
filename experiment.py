@@ -255,13 +255,13 @@ def launch(dataset, experiment_name, network, hidden_size, hidden_layers, sample
         binary_net.load_state_dict(weights, strict=False)
         binary_model = Model(binary_net, 'sgd', linear_loss, batch_metrics=[accuracy])
         test_loss, test_accuracy = binary_model.evaluate_generator(test_loader, steps=None)
-        test_stats = pd.read_csv(expt.test_log_filename, sep='\t')
+        test_stats = pd.read_csv(expt.test_log_filename.format(name='test'), sep='\t')
         test_stats['bin_test_linear_loss'] = test_loss
         test_stats['bin_test_accuracy'] = test_accuracy
         test_stats['linear_loss'] = test_stats['loss']
         test_stats['val_linear_loss'] = test_stats['val_loss']
         test_stats['test_linear_loss'] = test_stats['test_loss']
-        test_stats.to_csv(expt.test_log_filename, sep='\t', index=False)
+        test_stats.to_csv(expt.test_log_filename.format(name='test'), sep='\t', index=False)
 
     def pbgnet_testing(target_metric, irrelevant_columns, n_repetitions=20):
         print(f"Restoring best model according to {target_metric}")
@@ -323,7 +323,7 @@ def launch(dataset, experiment_name, network, hidden_size, hidden_layers, sample
         best_epoch_stats = best_epoch_stats.drop(metrics_stats.keys().tolist(), axis=1, errors='ignore')
         metrics_stats = metrics_stats.join(pd.concat([best_epoch_stats]*n_repetitions, ignore_index=True))
 
-        log_filename = expt.test_log_filename
+        log_filename = expt.test_log_filename.format(name='test')
         if network in ['pbgnet_ll', 'pbcombinet_ll'] and target_metric == 'bound':
             log_filename = join(logging_path, 'bound_test_log.tsv')
         metrics_stats.to_csv(log_filename, sep='\t', index=False)
