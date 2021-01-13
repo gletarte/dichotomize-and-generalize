@@ -129,7 +129,7 @@ def launch(dataset, experiment_name, network, hidden_size, hidden_layers, sample
                                                 loss_function=linear_loss,
                                                 delta=delta,
                                                 n_examples=X_train.shape[0],
-                                                C_range=C_range))
+                                                C_range=C_range.to(device)))
         callbacks.append(ModelCheckpoint(join(logging_path, 'bound_checkpoint_epoch.ckpt'),
                                          temporary_filename=join(logging_path, 'bound_checkpoint_epoch.tmp.ckpt'),
                                          monitor='bound',
