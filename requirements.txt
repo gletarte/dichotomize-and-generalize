@@ -1,5 +1,5 @@
 click==6.7
-numpy==1.14.3
+numpy==1.22.0
 torch==1.2.0
 pandas==0.23.0
 poutyne==1.2
